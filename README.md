@@ -17,6 +17,7 @@ Once senpy is installed, you have to clone this repo:
 
 ```
 git clone http://lab.cluster.gsi.dit.upm.es/trivalent/cogito-plugin.git
+```
 
 Then, move into your repository folder and start the senpy service.
 
