@@ -13,9 +13,32 @@ class ExpertSystemsPlugin(AnalysisPlugin):
 		headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 		url_cat = "http://trivalent.expertsystemlab.com/text/rest/categorize"		
 		res_cat = requests.post(url_cat, data=json.dumps(data), headers=headers)
-		entry['categorize'] = json.loads(res_cat.text)
+		categorize = json.loads(res_cat.text)
 		url_info = "http://trivalent.expertsystemlab.com/text/rest/extract-info"
 		res_info = json.loads(requests.post(url_info, data=json.dumps(data), headers=headers).text)
+		#print("CAT")
+		#print(json.loads(res_cat.text))
+		#print("INFO")
+		#print(res_info)
+		#print("Trazas...")
+		try:
+			categorization = categorize["RESPONSE"]["CATEGORIZATION"]
+			cats = []
+			for cat in categorization:
+				if "DOMAIN" in cat:
+					if type(cat["DOMAIN"]) == dict:
+						if "NAME" in cat["DOMAIN"]:
+							#print(cat["DOMAIN"]["NAME"])
+							cats.append(cat["DOMAIN"]["NAME"])
+					elif len(cat["DOMAIN"]) > 0:
+						for c in cat["DOMAIN"]:
+							if "NAME" in c:
+								#print(c["NAME"])
+								cats.append(c["NAME"])
+		except:
+			cats = []
+		
+
 
 
 		try:
@@ -80,7 +103,8 @@ class ExpertSystemsPlugin(AnalysisPlugin):
 
 		entry['organizations'] = organization_names
 		entry['people'] = people_names
-		entry['places'] = place_names 
+		entry['places'] = place_names
+		entry['taxonomies'] = cats 
 		#entry['info'] = res_info
 		yield entry
 
