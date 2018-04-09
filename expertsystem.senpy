@@ -1,5 +1,5 @@
 ---
-name: ExpertSystemPlugin
+name: CogitoPlugin
 module: expertsystem
 description: Plugin to access the ExpertSystem API
 author: "@rodbarest"
