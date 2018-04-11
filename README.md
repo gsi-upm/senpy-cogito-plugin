@@ -46,13 +46,6 @@ localhost:5000/api?algo=ExpertSystemPlugin&i=<TEXT_TO_ANALYZE>
 Categorization example.
 
 ![alt text](images/expert3.png "Search categorization")
-![alt text](images/expert4.png "Categorization")
-
-
-
-Entity extraction example.
-
-![alt text](images/expert1.png "Search")
 
 ![alt text](images/expert2.png "Entity extraction response")
 
